@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun Nailah!</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 50px;
+      background-color: #fff0f5;
+      color: #8B0000;
+    }
+
+    .icon {
+      font-size: 60px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.2s;
+    }
+
+    .icon:hover {
+      transform: scale(1.1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .step {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideUp 0.6s forwards;
+    }
+
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Step 1 -->
+  <div id="step1" class="step">
+    <p>Silahkan dibuka suratnya tuan putri </p>
+    <div class="icon" onclick="nextStep(2)">💌</div>
+  </div>
+
+  <!-- Step 2 -->
+  <div id="step2" class="hidden step">
+    <p>Eh... kayaknya lohh salah klik deh nai<br>
+       Coba klik sekali lagi</p>
+    <div class="icon" onclick="nextStep(3)">💣</div>
+  </div>
+
+  <!-- Step 3 -->
+  <div id="step3" class="hidden step">
+    <p>Lhooo… bomnya gagal meledak ya???<br>
+       Kasian wkwkwk coba klik lagi</p>
+    <div class="icon" onclick="nextStep(4)">🫠</div>
+  </div>
+
+  <!-- Step 4 -->
+  <div id="step4" class="hidden step">
+    <p>Yahhh, suratnya balik lagi?? kasiann dehh<br>
+       Tapi jangan senang dulu naii…</p>
+    <div class="icon" onclick="nextStep(5)">💌</div>
+  </div>
+
+  <!-- Final step -->
+  <div id="step5" class="hidden step">
+    <p>Tadaaa!! Sekarang siap-siap buka isi hatinya yaaa...</p>
+    <div class="icon" onclick="window.location.href='ucapan.html'">❤️</div>
+  </div>
+
+  <script>
+    function nextStep(step) {
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById('step' + i);
+        el.classList.add('hidden');
+        el.classList.remove('step'); // reset animasi
+      }
+
+      const next = document.getElementById('step' + step);
+      next.classList.remove('hidden');
+
+      // Trigger ulang animasi
+      void next.offsetWidth; // trick untuk restart CSS animation
+      next.classList.add('step');
+    }
+  </script>
+</body>
+</html>
